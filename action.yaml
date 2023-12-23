@@ -1,0 +1,23 @@
+name: 'TerraApprove'
+description: 'Validate the Terraform plan against the code base and output if approval is needed'
+inputs:
+  mode:
+    description: 'Operating mode (standard, safe-to-apply)'
+    required: true
+    default: 'standard'
+  tf_code_dir:
+    description: 'Path to the Terraform code'
+    required: true
+  tf_plan_json_file:
+    description: 'Path to the Terraform plan JSON file'
+    required: true
+outputs:
+  approval_required:
+    description: 'True if approval is required'
+runs:
+  using: 'docker'
+  image: 'docker://giovannibaratta/terraapprove:v0.0.7'
+
+branding:
+  icon: 'award'
+  color: 'yellow'
